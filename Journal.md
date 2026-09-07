@@ -1,2 +1,5 @@
 # Phase 1
 Both PlainText and TextDecorator implement the same TextComponents interface so that they can be treated the same. This is important so the Decorator Pattern  because a decorator needs to be able to warp the original object or decorator. PlainText is the actual text while TextDecorator is a wrapper that can add behavior to the text. The composition is what allows them to be stacked so it can contain PlainText and another decorator.
+
+# Phase 2
+Each concrete decorator needs to call inner component's getText() method instead of hard coding its own copy of the text. This allows them to work with all versions of PlainText and other decorators. When the UpperCaseDecorator wraps BoldDecorator the inner BoldDectecror first produces the bold version then the UpperCase makes it uppercase causing <B>. When the opposite happens, the uppercase transform happens then bold defector places <b> tags. This shows how order matters when you wrap your classes.
