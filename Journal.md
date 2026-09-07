@@ -3,3 +3,6 @@ Both PlainText and TextDecorator implement the same TextComponents interface so 
 
 # Phase 2
 Each concrete decorator needs to call inner component's getText() method instead of hard coding its own copy of the text. This allows them to work with all versions of PlainText and other decorators. When the UpperCaseDecorator wraps BoldDecorator the inner BoldDectecror first produces the bold version then the UpperCase makes it uppercase causing <B>. When the opposite happens, the uppercase transform happens then bold defector places <b> tags. This shows how order matters when you wrap your classes.
+
+# Phase 3
+This implementation follows Open_Closed principles because the existing classes do not need to be edited when adding new formatting behavior. The textcomponet interface provides the common contract while textdetector has the reusable structure. If I need to add an UnderlineDecorator i only need to make 1 new class that extends TextDecorator and implements its getText() method. No need to modify anything else other than making a new file.
